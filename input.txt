@@ -1,0 +1,17 @@
+CONST
+	dwa=2 zero=0 jeden=1
+VAR
+	a b
+BEGIN
+	a:=1000;
+	WHILE a>zero DO
+		b:=a/dwa;
+		b:=dwa*b;
+		IF a>b THEN
+			WRITE jeden;
+		ELSE
+			WRITE zero;
+		END
+		a:=a/dwa;
+	END
+END
