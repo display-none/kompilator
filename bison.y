@@ -1,21 +1,31 @@
 %{
 	#include <stdio.h>
+	#include <cstring>
+	
+	#include "SymbolTable.h"
+	#include "structures.h"
+	
+	using namespace std;
 
 	int yylex(void);
 	void yyerror(char *);
 	
+	SymbolTable symbolTable;
 %}
 
-%union{ char* string; int integer; }
+%union{ char* string; 
+		int integer;
+		label* label;	/* for backpatching */
+	}
 
 %token <string> CONST
 %token <string> VAR
 %token <string> _BEGIN
 %token <string> END
-%token <string> IF
+%token <label> IF
 %token <string> THEN
 %token <string> ELSE
-%token <string> WHILE
+%token <label> WHILE
 %token <string> DO
 %token <string> READ
 %token <string> WRITE
