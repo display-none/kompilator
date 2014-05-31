@@ -1,6 +1,6 @@
 %{
 	#include <stdio.h>
-	#include <cstring>
+	#include <string>
 	
 	#include "SymbolTable.h"
 	#include "structures.h"
@@ -15,7 +15,7 @@
 
 %union{ char* string; 
 		int integer;
-		label* label;	/* for backpatching */
+		lbl* label;	/* for backpatching */
 	}
 
 %token <string> CONST

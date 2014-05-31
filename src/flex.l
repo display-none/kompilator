@@ -3,6 +3,7 @@
 
 %{
 #include <stdio.h>
+#include "structures.h"
 #include "bison.tab.h"
 
 using namespace std;
