@@ -1,5 +1,6 @@
 
 %x COMMENT
+%option yylineno
 
 %{
 #include <stdio.h>
@@ -26,20 +27,20 @@ WRITE							{ return WRITE; }
 
 
 [0-9]+							{
-									yylval.integer = atoi(yytext);
+									yylval.integer = atol(yytext);
 									return num;
 								}
 
-":="							{ return *yytext; }
-"=="							{ return *yytext; }
-"!="							{ return *yytext; }
-">="							{ return *yytext; }
-"<="							{ return *yytext; }
+":="							{ return OP_ASSGN; }
+"=="							{ return OP_EQ; }
+"!="							{ return OP_NEQ; }
+">="							{ return OP_GTEQ; }
+"<="							{ return OP_LTEQ; }
 
 [-+*/%=><;]						{ return *yytext; }
 
 [_a-z]+							{
-									yylval.string = yytext;
+									yylval.string = (char *) strdup(yytext);
 									return identifier;
 								}
 

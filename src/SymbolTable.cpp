@@ -11,8 +11,8 @@ SymbolTable::SymbolTable() {
 
 }
 
-void SymbolTable::addNewSymbol(string identifier, int value, bool isConst) {
-	symbols.push_back(symbol(identifier, value, isConst));
+void SymbolTable::addSymbol(const symbol& symbol) {
+	symbols.push_back(symbol);
 }
 
 symbol* SymbolTable::findSymbol(string identifier) {

@@ -1,17 +1,30 @@
-CONST
-	dwa=2 zero=0 jeden=1
-VAR
-	a b
+(* Rozklad liczby na czynniki pierwsze *)
+CONST zero=0 jeden=1
+VAR n m reszta potega dzielnik
 BEGIN
-	a:=1000;
-	WHILE a>zero DO
-		b:=a/dwa;
-		b:=dwa*b;
-		IF a>b THEN
-			WRITE jeden;
-		ELSE
-			WRITE zero;
-		END
-		a:=a/dwa;
-	END
+    READ n;
+    dzielnik:=2;
+    m:=dzielnik*dzielnik;
+    WHILE n>=m DO
+        potega:=0;
+        reszta:=n%dzielnik;
+        WHILE reszta==zero DO
+            n:=n/dzielnik;
+            potega:=potega+jeden;
+            reszta:=n%dzielnik;
+        END
+        IF potega>zero THEN (* czy znaleziono dzielnik *)
+            WRITE dzielnik;
+            WRITE potega;
+        ELSE
+            dzielnik:=dzielnik+jeden;
+            m:=dzielnik*dzielnik;
+        END
+    END
+    IF n!=jeden THEN (* ostatni dzielnik *)
+        WRITE n;
+        WRITE jeden;
+    ELSE
+    END
 END
+

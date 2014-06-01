@@ -21,7 +21,7 @@ private:
 	list<symbol> symbols;
 public:
 	SymbolTable();
-	void addNewSymbol(string identifier, int value, bool isConst);
+	void addSymbol(const symbol& symbol);
 	symbol* findSymbol(string identifier);
 };
 
